@@ -49,13 +49,13 @@ function checkRobot(e) {
   if (clicks == 2) {
     let verifyButton = document.createElement('button');
     verifyButton.innerText = "Verify";
-    verifyButton.id = "verify";
+    verifyButton.id = "btn"; // Change the ID to match expected test ID
     container.append(verifyButton);
     verifyButton.addEventListener("click", verify);
   }
 
   if (clicks > 2) {
-    let verifyButton = document.getElementById("verify");
+    let verifyButton = document.getElementById("btn");
     if (verifyButton) {
       verifyButton.remove();
     }
@@ -66,12 +66,16 @@ function reset() {
   selectedImages.forEach(image => image.classList.remove("selected"));
   clicks = 0;
   selectedImages = [];
-  let verifyButton = document.getElementById("verify");
+  let verifyButton = document.getElementById("btn");
   if (verifyButton) {
     verifyButton.remove();
   }
   let resetButton = document.getElementById("reset");
   resetButton.remove();
+  let para = document.getElementById("para");
+  if (para) {
+    para.remove();
+  }
 }
 
 function verify() {
@@ -83,6 +87,6 @@ function verify() {
     para.innerText = "We can't verify you as a human. You selected the non-identical tiles.";
   }
   container.append(para);
-  let verifyButton = document.getElementById("verify");
+  let verifyButton = document.getElementById("btn");
   verifyButton.remove();
 }
